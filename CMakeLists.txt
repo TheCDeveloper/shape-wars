@@ -7,6 +7,6 @@ project(ShapeWars VERSION 1.0 LANGUAGES C)
 find_package(SDL3 REQUIRED CONFIG)
 
 
-file(GLOB SOURCES src/*.c)
+file(GLOB SOURCES CONFIGURE_DEPENDS src/*.c)
 add_executable(ShapeWars ${SOURCES})
-target_link_libraries(ShapeWars PRIVATE SDL3::SDL3)
+target_link_libraries(ShapeWars PRIVATE SDL3::SDL3 m)

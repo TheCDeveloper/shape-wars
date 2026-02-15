@@ -4,7 +4,7 @@
 
 
 int main(int argc, char **argv) {
-    game *instance = game_init();
+    game_t *instance = game_init();
     if (!instance) {
         fprintf(stderr, "Failed to initialize!\n");
         return 1;
