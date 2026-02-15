@@ -1,5 +1,4 @@
 #include "game.h"
-#include "player.h"
 #include "constants.h"
 
 #include <stdio.h>
@@ -44,7 +43,7 @@ game_t *game_init(void) {
         return NULL;
     }
 
-    game->player = player_create(game->renderer);
+    level_initialize(&game->level, game->renderer);
 
     return game;
 }
@@ -55,7 +54,7 @@ void game_destroy(game_t *game) {
         return;
     }
 
-    player_destroy(game->player);
+    level_deinitialize(&game->level);
 
     SDL_DestroyRenderer(game->renderer);
     SDL_DestroyWindow(game->window);
@@ -72,7 +71,7 @@ static void handle_events(game_t *game) {
                 break;
 
             default:
-                player_event(game->player, &event);
+                level_event(&game->level, &event);
                 break;
         }
     }
@@ -84,12 +83,14 @@ void game_run(game_t *game) {
         return;
     }
 
+    level_start(&game->level);
+
     game->running = true;
     while (game->running) {
-        player_update(game->player, 0.167f);
+        level_update(&game->level, 0.167f);
 
         SDL_RenderClear(game->renderer);
-        sprite_render(&game->player->sprite, game->renderer);
+        level_render(&game->level);
         SDL_RenderPresent(game->renderer);
 
         handle_events(game);

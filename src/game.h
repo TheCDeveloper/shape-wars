@@ -1,12 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "level.h"
+
 #include <stdbool.h>
 
 typedef struct SDL_Window SDL_Window;
 typedef struct SDL_Renderer SDL_Renderer;
-
-typedef struct player_t player_t;
 
 typedef struct game {
     bool running;
@@ -14,7 +14,7 @@ typedef struct game {
     SDL_Window *window;
     SDL_Renderer *renderer;
 
-    player_t *player;
+    level_t level;
 } game_t;
 
 game_t *game_init(void);
