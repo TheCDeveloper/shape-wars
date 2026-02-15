@@ -8,7 +8,6 @@
 typedef struct SDL_Texture SDL_Texture;
 typedef struct SDL_Renderer SDL_Renderer;
 
-// TODO: implement this
 SDL_Texture *util_load_texture(SDL_Renderer *renderer, const char *filename); 
 
 typedef struct sprite_t {

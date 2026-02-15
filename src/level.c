@@ -1,8 +1,12 @@
 #include "level.h"
 #include "player.h"
 #include "enemy.h"
+#include "constants.h"
 
 #include <stdlib.h>
+#include <math.h>
+
+#include <SDL3/SDL_rect.h>
 
 
 void level_initialize(level_t *level, SDL_Renderer *renderer) {
@@ -39,6 +43,9 @@ void level_start(level_t *level) {
     for (size_t i = 0; i < level->enemy_count; i++) {
         enemy_t *enemy = &level->enemies[i];
         enemy_initialize(enemy, level->renderer, 10, 1);
+
+        enemy->sprite.position.x = ((float) rand() / RAND_MAX) * WINDOW_WIDTH;
+        enemy->sprite.position.y = ((float) rand() / RAND_MAX) * WINDOW_HEIGHT;
     }
 }
 
@@ -51,9 +58,18 @@ void level_event(level_t *level, void *event) {
 void level_update(level_t *level, float deltatime) {
     player_update(level->player, deltatime);
 
+    // TODO: improve entity AI (add collisions between entities)
     for (size_t i = 0; i < level->enemy_count; i++) {
         enemy_t *enemy = &level->enemies[i];
-        // TODO: add enemy AI
+        
+        vec2 enemy_pos = enemy->sprite.position;
+        vec2 player_pos = level->player->sprite.position;
+        float distance = hypot(player_pos.x - enemy_pos.x, player_pos.y - enemy_pos.y);
+
+        float dx = (player_pos.x - enemy_pos.x) / distance;
+        float dy = (player_pos.y - enemy_pos.y) / distance;
+        enemy->sprite.position.x += dx;
+        enemy->sprite.position.y += dy;
     }
 }
 
