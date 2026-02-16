@@ -40,6 +40,12 @@ static inline int calculate_difficulty(unsigned int wave) {
 }
 
 
+static inline float rand_rangef(float min, float max) {
+    return (rand() / (float) RAND_MAX) * (max - min) + min;
+}
+
+
+
 void level_start(level_t *level) {
     level->enemy_count = calculate_difficulty(level->wave); 
     level->enemies = calloc(level->enemy_count, sizeof(enemy_t));
@@ -49,8 +55,8 @@ void level_start(level_t *level) {
         enemy_initialize(enemy, level->renderer, 10, 1);
         enemy->alive = true;
 
-        enemy->sprite.position.x = ((float) rand() / RAND_MAX) * WINDOW_WIDTH;
-        enemy->sprite.position.y = ((float) rand() / RAND_MAX) * WINDOW_HEIGHT;
+        enemy->sprite.position.x = rand_rangef(-2000, WINDOW_WIDTH + 2000);
+        enemy->sprite.position.y = rand_rangef(-2000, WINDOW_HEIGHT + 2000);
     }
 }
 
