@@ -9,17 +9,15 @@
 #include <SDL3/SDL_events.h>
 
 
-player_t *player_create(SDL_Renderer *renderer) {
-    player_t *player = malloc(sizeof(player_t));
-    player->sprite.texture = util_load_texture(renderer, "res/player.png");
-    player->sprite.visible = true;
-    player->sprite.alpha = 1.0f;
-    player->sprite.position = (vec2) { 0, 0 };
-    player->sprite.size = (vec2) { 100, 100 };
-    player->sprite.rotation = 0.0;
-    player->velocity = (vec2) { 0, 0 };
+void player_init(player_t *player, SDL_Renderer *renderer) {
+    entity_init(&player->entity, 100);
+    player->entity.sprite.texture = util_load_texture(renderer, "res/player.png");
     player->input_vec = (vec2) { 0, 0 };
-    return player;
+}
+
+
+void player_cleanup(player_t *player) {
+    SDL_DestroyTexture(player->entity.sprite.texture);
 }
 
 
@@ -28,7 +26,7 @@ void player_destroy(player_t *player) {
         return;
     }
 
-    SDL_DestroyTexture(player->sprite.texture);
+    SDL_DestroyTexture(player->entity.sprite.texture);
     free(player);
 }
 
@@ -99,17 +97,16 @@ void player_update(player_t *player, float deltatime) {
     }
 #endif
 
-    player->velocity.x += cos(player->sprite.rotation * (M_PI / 180.0f)) *
+    player->entity.velocity.x += cos(player->entity.sprite.rotation * (M_PI / 180.0f)) *
                          player->input_vec.y * 100.0f * deltatime;
-    player->velocity.y += sin(player->sprite.rotation * (M_PI / 180.0f)) *
+    player->entity.velocity.y += sin(player->entity.sprite.rotation * (M_PI / 180.0f)) *
                          player->input_vec.y * 100.0f * deltatime;
     player->rvelocity += player->input_vec.x * 45.0f * deltatime;
 
-    player->sprite.position.x += player->velocity.x * deltatime;
-    player->sprite.position.y += player->velocity.y * deltatime;
-    player->sprite.rotation += player->rvelocity * deltatime;
+    entity_update(&player->entity, deltatime);
+    player->entity.sprite.rotation += player->rvelocity * deltatime;
 
-    player->velocity.x -= player->velocity.x * 1.0f * deltatime;
-    player->velocity.y -= player->velocity.y * 1.0f * deltatime;
+    player->entity.velocity.x -= player->entity.velocity.x * 1.0f * deltatime;
+    player->entity.velocity.y -= player->entity.velocity.y * 1.0f * deltatime;
     player->rvelocity -= player->rvelocity * 1.0f * deltatime;
 }

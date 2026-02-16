@@ -1,23 +1,17 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "sprite.h"
+#include "entity.h"
 
 typedef struct player_t player_t;
 
 typedef struct enemy_t {
-    sprite_t sprite;
+    entity_t entity;
     
-    struct {
-        int value;
-        int max;
-    } health;
-
     int damage;
-    bool alive;
 } enemy_t;
 
-void enemy_initialize(enemy_t *enemy,
+void enemy_init(enemy_t *enemy,
                       SDL_Renderer *renderer,
                       int health,
                       int damage);

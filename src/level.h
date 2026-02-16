@@ -1,6 +1,8 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include "player.h"
+
 #include <stddef.h>
 
 typedef struct SDL_Renderer SDL_Renderer;
@@ -12,7 +14,7 @@ typedef struct enemy_t enemy_t;
 typedef struct bullet_t bullet_t;
 
 typedef struct level_t {
-    player_t *player;
+    player_t player;
 
     size_t bullet_count;
     bullet_t *bullets;
