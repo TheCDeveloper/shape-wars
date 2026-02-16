@@ -13,8 +13,7 @@
 void level_initialize(level_t *level, SDL_Renderer *renderer) {
     player_init(&level->player, renderer);
     
-    level->bullet_count = 0;
-    level->bullets = NULL;
+    bullet_manager_init(&level->bullet_manager, renderer);
     
     level->wave = 1;
     level->score = 0;
@@ -32,6 +31,7 @@ void level_deinitialize(level_t *level) {
         free(level->enemies);
     }
 
+    bullet_manager_cleanup(&level->bullet_manager);
     player_cleanup(&level->player);
     SDL_DestroyTexture(level->background);
 }
@@ -65,6 +65,16 @@ void level_start(level_t *level) {
 
 void level_event(level_t *level, void *event) {
     player_event(&level->player, event);
+
+    SDL_Event *e = event;
+    if (e->type == SDL_EVENT_KEY_DOWN) {
+        if (e->key.scancode == SDL_SCANCODE_SPACE) {
+            bullet_manager_shoot(&level->bullet_manager,
+                                 level->player.entity.sprite.position,
+                                 level->player.entity.sprite.rotation,
+                                 10);
+        }
+    }
 }
 
 
@@ -92,6 +102,7 @@ static inline void uncollide(sprite_t *a, sprite_t *b, float min_distance) {
 
 void level_update(level_t *level, float deltatime) {
     player_update(&level->player, deltatime);
+    bullet_manager_update(&level->bullet_manager, deltatime);
 
     bool found_alive_enemies = false;
     for (size_t i = 0; i < level->enemy_count; i++) {
@@ -132,6 +143,7 @@ void level_update(level_t *level, float deltatime) {
 void level_render(level_t *level) {
     SDL_RenderTexture(level->renderer, level->background, 0, 0);
 
+    bullet_manager_render(&level->bullet_manager);
     sprite_render(&level->player.entity.sprite, level->renderer);
 
     for (size_t i = 0; i < level->enemy_count; i++) {

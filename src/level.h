@@ -2,6 +2,7 @@
 #define LEVEL_H
 
 #include "player.h"
+#include "bullet.h"
 
 #include <stddef.h>
 
@@ -16,8 +17,7 @@ typedef struct bullet_t bullet_t;
 typedef struct level_t {
     player_t player;
 
-    size_t bullet_count;
-    bullet_t *bullets;
+    bullet_manager_t bullet_manager;
 
     unsigned int wave;
     unsigned int score;
