@@ -22,12 +22,9 @@ SDL_Texture *util_load_texture(SDL_Renderer *renderer, const char *filename) {
 
 
 void sprite_render(sprite_t *sprite, SDL_Renderer *renderer) {
-#ifndef NDEBUG
-    if (!sprite || !renderer) {
-        fprintf(stderr, "sprite_render, sprite.c: sprite or renderer is NULL\n");
+    if (!sprite->visible) {
         return;
     }
-#endif
 
     SDL_FRect dst = {
         sprite->position.x, sprite->position.y,
@@ -37,6 +34,8 @@ void sprite_render(sprite_t *sprite, SDL_Renderer *renderer) {
     SDL_FPoint center = {
         dst.w / 2.0f, dst.h / 2.0f
     };
+
+    SDL_SetTextureAlphaModFloat(sprite->texture, sprite->alpha);
 
     SDL_RenderTextureRotated(renderer,
                              sprite->texture,
