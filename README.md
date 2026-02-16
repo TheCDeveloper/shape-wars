@@ -14,7 +14,9 @@ Requirements
 
 Build
 ```
-cd <project root>
+git clone https://github.com/thecdeveloper/shape-wars.git shape-wars
+cd shape-wars
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
+To run, `res` folder must accessable at current directory
