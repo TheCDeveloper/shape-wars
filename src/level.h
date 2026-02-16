@@ -1,18 +1,25 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include <stddef.h>
+
 typedef struct SDL_Renderer SDL_Renderer;
 
 typedef struct player_t player_t;
 typedef struct enemy_t enemy_t;
 
+typedef struct bullet_t bullet_t;
+
 typedef struct level_t {
     player_t *player;
+
+    size_t bullet_count;
+    bullet_t *bullets;
 
     unsigned int wave;
     unsigned int score;
 
-    int enemy_count;
+    size_t enemy_count;
     enemy_t *enemies;
 
     SDL_Renderer *renderer;
