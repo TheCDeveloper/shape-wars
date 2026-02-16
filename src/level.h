@@ -4,6 +4,7 @@
 #include <stddef.h>
 
 typedef struct SDL_Renderer SDL_Renderer;
+typedef struct SDL_Texture SDL_Texture;
 
 typedef struct player_t player_t;
 typedef struct enemy_t enemy_t;
@@ -23,6 +24,7 @@ typedef struct level_t {
     enemy_t *enemies;
 
     SDL_Renderer *renderer;
+    SDL_Texture *background;
 } level_t;
 
 void level_initialize(level_t *level, SDL_Renderer *renderer);
