@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="180"
-   height="180"
-   viewBox="0 0 180 180"
+   width="256"
+   height="256"
+   viewBox="0 0 256 256"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
@@ -14,6 +14,7 @@
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -26,21 +27,68 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="2.8333333"
-     inkscape:cx="90.176471"
-     inkscape:cy="90"
-     inkscape:current-layer="layer1" />
+     inkscape:zoom="4.1394923"
+     inkscape:cx="119.45909"
+     inkscape:cy="133.95363"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1916"
+     inkscape:window-height="1148"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <linearGradient
+       id="linearGradient3"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#f37900;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+      <stop
+         style="stop-color:#ffe700;stop-opacity:1;"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect2"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,18.169544,0,1 @ F,0,0,1,0,10.742396,0,1 @ F,0,0,1,0,10.742396,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3"
+       id="linearGradient4"
+       x1="16.208745"
+       y1="128"
+       x2="226.35411"
+       y2="128"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <circle
-       style="fill:#ff7f2a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"
-       id="path1"
-       cx="90"
-       cy="90"
-       r="90" />
+    <path
+       id="path2"
+       style="fill:url(#linearGradient4);stroke:#000000;stroke-width:30;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       inkscape:transform-center-x="-32.263754"
+       d="M 207.41851,133.32167 41.480046,184.15246 A 7.9444529,7.9444529 36.484481 0 1 31.208745,176.5564 V 79.443598 A 7.944453,7.944453 143.51552 0 1 41.480046,71.847539 L 207.41851,122.67833 a 5.5657516,5.5657516 90 0 1 0,10.64334 z"
+       inkscape:path-effect="#path-effect2"
+       inkscape:original-d="M 224.79125,128 31.208745,187.2988 V 68.701202 Z"
+       transform="translate(6.7185764)" />
   </g>
 </svg>
