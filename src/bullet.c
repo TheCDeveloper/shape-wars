@@ -176,6 +176,10 @@ static bool is_bullet_valid(bullet_engine_t *be, bullet_t *bullet) {
 void bullet_engine_update(bullet_engine_t *be, float deltatime) {
     for (size_t i = 0; i < be->bullets_count; i++) {
         bullet_t *bullet = &be->bullets[i];
+        if (!bullet->active) {
+            continue;
+        }
+
         bullet->sprite.position.x += bullet->velocity.x * deltatime;
         bullet->sprite.position.y += bullet->velocity.y * deltatime;
 
@@ -189,6 +193,10 @@ void bullet_engine_update(bullet_engine_t *be, float deltatime) {
 void bullet_engine_render(bullet_engine_t *be) {
     for (size_t i = 0; i < be->bullets_count; i++) {
         bullet_t *bullet = &be->bullets[i];
+        if (!bullet->active) {
+            continue;
+        }
+
         sprite_render(&bullet->sprite, be->renderer);
     }
 }
