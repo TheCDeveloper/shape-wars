@@ -53,7 +53,6 @@ void bullet_engine_cleanup(bullet_engine_t *be) {
 
 
 void bullet_engine_register_entity(bullet_engine_t *be, entity_t *entity) {
-
     size_t index = SIZE_MAX;
     for (size_t i = 0; i < be->entities_count; i++) {
         if (be->entities[i] == NULL) {
@@ -159,6 +158,10 @@ static bool is_bullet_valid(bullet_engine_t *be, bullet_t *bullet) {
 
     for (size_t i = 0; i < be->entities_count; i++) {
         entity_t *entity = be->entities[i];
+        if (entity == NULL) {
+            continue;
+        }
+
         SDL_FRect b = {
             entity->sprite.position.x, entity->sprite.position.y,
             entity->sprite.size.x, entity->sprite.size.y
