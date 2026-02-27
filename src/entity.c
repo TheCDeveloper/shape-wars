@@ -29,5 +29,9 @@ void entity_update(entity_t *entity, float deltatime) {
 
 
 void entity_render(entity_t *entity, SDL_Renderer *renderer) {
+    if (!entity->alive) {
+        return;
+    }
+
     sprite_render(&entity->sprite, renderer);
 }
