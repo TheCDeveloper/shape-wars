@@ -117,6 +117,12 @@ void level_update(level_t *level, float deltatime) {
         }
 
         found_alive_enemies = true;
+
+        entity_update(&enemy->entity, deltatime);
+
+        if (!enemy->entity.alive) {
+            bullet_engine_unregister_entity(&level->bullet_engine, &enemy->entity);
+        }
         
         vec2 enemy_pos = enemy->entity.sprite.position;
         vec2 player_pos = level->player.entity.sprite.position;
@@ -153,6 +159,10 @@ void level_render(level_t *level) {
 
     for (size_t i = 0; i < level->enemy_count; i++) {
         enemy_t *enemy = &level->enemies[i];
+        if (!enemy->entity.alive) {
+            continue;
+        }
+
         sprite_render(&enemy->entity.sprite, level->renderer);
     }
 }
