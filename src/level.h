@@ -17,7 +17,7 @@ typedef struct bullet_t bullet_t;
 typedef struct level_t {
     player_t player;
 
-    bullet_manager_t bullet_manager;
+    bullet_engine_t bullet_engine;
 
     unsigned int wave;
     unsigned int score;

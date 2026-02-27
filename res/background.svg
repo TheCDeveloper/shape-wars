@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
-   sodipodi:docname="background.svg"
+   sodipodi:docname="background-new.svg"
    inkscape:export-filename="background.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -26,9 +26,14 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="0.33103975"
-     inkscape:cx="948.52656"
-     inkscape:cy="555.82448"
+     inkscape:zoom="0.62167561"
+     inkscape:cx="949.85228"
+     inkscape:cy="521.9764"
+     inkscape:window-width="1916"
+     inkscape:window-height="1148"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
      id="defs1" />
@@ -37,12 +42,18 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#1c1729;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+       style="fill:#1c1b27;stroke-width:60;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;fill-opacity:1"
        id="rect1"
        width="1920"
        height="1080"
        x="0"
        y="0"
-       ry="5.8020802" />
+       inkscape:label="Background" />
+    <path
+       id="use97"
+       style="fill:#1f1d2a;fill-opacity:1;stroke-width:63.2456;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       inkscape:label="Tiles"
+       d="M -15 0 L -15 135 L 135 135 L 135 0 L -15 0 z M 135 135 L 135 270 L 270 270 L 270 135 L 135 135 z M 270 135 L 405 135 L 405 0 L 270 0 L 270 135 z M 405 135 L 405 270 L 540 270 L 540 135 L 405 135 z M 540 135 L 675 135 L 675 0 L 540 0 L 540 135 z M 675 135 L 675 270 L 810 270 L 810 135 L 675 135 z M 810 135 L 945 135 L 945 0 L 810 0 L 810 135 z M 945 135 L 945 270 L 1080 270 L 1080 135 L 945 135 z M 1080 135 L 1215 135 L 1215 0 L 1080 0 L 1080 135 z M 1215 135 L 1215 270 L 1350 270 L 1350 135 L 1215 135 z M 1350 135 L 1485 135 L 1485 0 L 1350 0 L 1350 135 z M 1485 135 L 1485 270 L 1620 270 L 1620 135 L 1485 135 z M 1620 135 L 1755 135 L 1755 0 L 1620 0 L 1620 135 z M 1755 135 L 1755 270 L 1905 270 L 1905 135 L 1755 135 z M 1755 270 L 1620 270 L 1620 405 L 1755 405 L 1755 270 z M 1755 405 L 1755 540 L 1905 540 L 1905 405 L 1755 405 z M 1755 540 L 1620 540 L 1620 675 L 1755 675 L 1755 540 z M 1755 675 L 1755 810 L 1905 810 L 1905 675 L 1755 675 z M 1755 810 L 1620 810 L 1620 945 L 1755 945 L 1755 810 z M 1755 945 L 1755 1080 L 1890 1080 L 1890 945 L 1755 945 z M 1620 945 L 1485 945 L 1485 1080 L 1620 1080 L 1620 945 z M 1485 945 L 1485 810 L 1350 810 L 1350 945 L 1485 945 z M 1350 945 L 1215 945 L 1215 1080 L 1350 1080 L 1350 945 z M 1215 945 L 1215 810 L 1080 810 L 1080 945 L 1215 945 z M 1080 945 L 945 945 L 945 1080 L 1080 1080 L 1080 945 z M 945 945 L 945 810 L 810 810 L 810 945 L 945 945 z M 810 945 L 675 945 L 675 1080 L 810 1080 L 810 945 z M 675 945 L 675 810 L 540 810 L 540 945 L 675 945 z M 540 945 L 405 945 L 405 1080 L 540 1080 L 540 945 z M 405 945 L 405 810 L 270 810 L 270 945 L 405 945 z M 270 945 L 135 945 L 135 1080 L 270 1080 L 270 945 z M 135 945 L 135 810 L -15 810 L -15 945 L 135 945 z M 135 810 L 270 810 L 270 675 L 135 675 L 135 810 z M 135 675 L 135 540 L -15 540 L -15 675 L 135 675 z M 135 540 L 270 540 L 270 405 L 135 405 L 135 540 z M 135 405 L 135 270 L -15 270 L -15 405 L 135 405 z M 270 405 L 405 405 L 405 270 L 270 270 L 270 405 z M 405 405 L 405 540 L 540 540 L 540 405 L 405 405 z M 540 405 L 675 405 L 675 270 L 540 270 L 540 405 z M 675 405 L 675 540 L 810 540 L 810 405 L 675 405 z M 810 405 L 945 405 L 945 270 L 810 270 L 810 405 z M 945 405 L 945 540 L 1080 540 L 1080 405 L 945 405 z M 1080 405 L 1215 405 L 1215 270 L 1080 270 L 1080 405 z M 1215 405 L 1215 540 L 1350 540 L 1350 405 L 1215 405 z M 1350 405 L 1485 405 L 1485 270 L 1350 270 L 1350 405 z M 1485 405 L 1485 540 L 1620 540 L 1620 405 L 1485 405 z M 1485 540 L 1350 540 L 1350 675 L 1485 675 L 1485 540 z M 1485 675 L 1485 810 L 1620 810 L 1620 675 L 1485 675 z M 1350 675 L 1215 675 L 1215 810 L 1350 810 L 1350 675 z M 1215 675 L 1215 540 L 1080 540 L 1080 675 L 1215 675 z M 1080 675 L 945 675 L 945 810 L 1080 810 L 1080 675 z M 945 675 L 945 540 L 810 540 L 810 675 L 945 675 z M 810 675 L 675 675 L 675 810 L 810 810 L 810 675 z M 675 675 L 675 540 L 540 540 L 540 675 L 675 675 z M 540 675 L 405 675 L 405 810 L 540 810 L 540 675 z M 405 675 L 405 540 L 270 540 L 270 675 L 405 675 z "
+       transform="translate(15)" />
   </g>
 </svg>
