@@ -168,6 +168,7 @@ static bool is_bullet_valid(bullet_engine_t *be, bullet_t *bullet) {
         };
 
         if (SDL_HasRectIntersectionFloat(&a, &b)) {
+            entity->health.value -= bullet->damage;
             return false;
         }
     }
