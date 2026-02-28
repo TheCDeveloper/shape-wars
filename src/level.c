@@ -56,8 +56,10 @@ void level_start(level_t *level) {
         enemy_init(enemy, level->renderer, 10, 1);
         enemy->entity.alive = true;
 
-        enemy->entity.sprite.position.x = rand_rangef(-2000, WINDOW_WIDTH + 2000);
-        enemy->entity.sprite.position.y = rand_rangef(-2000, WINDOW_HEIGHT + 2000);
+        enemy->entity.sprite.position.x = rand_rangef(-2000,
+                                                      WINDOW_WIDTH + 2000);
+        enemy->entity.sprite.position.y = rand_rangef(-2000,
+                                                      WINDOW_HEIGHT + 2000);
 
         bullet_engine_register_entity(&level->bullet_engine, &enemy->entity);
     }
@@ -121,17 +123,23 @@ void level_update(level_t *level, float deltatime) {
         entity_update(&enemy->entity, deltatime);
 
         if (!enemy->entity.alive) {
-            bullet_engine_unregister_entity(&level->bullet_engine, &enemy->entity);
+            bullet_engine_unregister_entity(&level->bullet_engine,
+                                            &enemy->entity);
         }
         
         vec2 enemy_pos = enemy->entity.sprite.position;
         vec2 player_pos = level->player.entity.sprite.position;
-        float distance = hypot(player_pos.x - enemy_pos.x, player_pos.y - enemy_pos.y);
+        float distance = hypot(player_pos.x - enemy_pos.x,
+                               player_pos.y - enemy_pos.y);
 
         float dx = (player_pos.x - enemy_pos.x) / distance;
         float dy = (player_pos.y - enemy_pos.y) / distance;
         enemy->entity.sprite.position.x += dx;
         enemy->entity.sprite.position.y += dy;
+
+        enemy->entity.sprite.rotation = atan2(player_pos.y - enemy_pos.y,
+                                              player_pos.x - enemy_pos.x) *
+                                        (180.0f / M_PI);
 
         // Handle collisions
         uncollide(&level->player.entity.sprite, &enemy->entity.sprite, 75.0f);
