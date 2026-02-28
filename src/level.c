@@ -18,11 +18,13 @@ void level_initialize(level_t *level, SDL_Renderer *renderer) {
     level->wave = 1;
     level->score = 0;
 
-    level->enemy_count = 0;
+    level->enemies_count = 0;
     level->enemies = NULL;
 
     level->renderer = renderer;
-    level->background = util_load_texture(renderer, "res/background.png");
+    level->background_texture = util_load_texture(renderer, 
+                                                  "res/background.png");
+    level->enemy_texture = util_load_texture(renderer, "res/enemy.png");
 }
 
 
@@ -33,7 +35,8 @@ void level_deinitialize(level_t *level) {
 
     bullet_engine_cleanup(&level->bullet_engine);
     player_cleanup(&level->player);
-    SDL_DestroyTexture(level->background);
+    SDL_DestroyTexture(level->background_texture);
+    SDL_DestroyTexture(level->enemy_texture);
 }
 
 
@@ -47,13 +50,24 @@ static inline float rand_rangef(float min, float max) {
 }
 
 
-void level_start(level_t *level) {
-    level->enemy_count = calculate_difficulty(level->wave); 
-    level->enemies = calloc(level->enemy_count, sizeof(enemy_t));
+static void initialize_enemy(level_t *level,
+                             enemy_t *enemy,
+                             int health,
+                             int damage) {
+    
+    entity_init(&enemy->entity, health);
+    enemy->entity.sprite.texture = level->enemy_texture;
+    enemy->damage = damage;
+}
 
-    for (size_t i = 0; i < level->enemy_count; i++) {
+
+void level_start(level_t *level) {
+    level->enemies_count = calculate_difficulty(level->wave); 
+    level->enemies = calloc(level->enemies_count, sizeof(enemy_t));
+
+    for (size_t i = 0; i < level->enemies_count; i++) {
         enemy_t *enemy = &level->enemies[i];
-        enemy_init(enemy, level->renderer, 10, 1);
+        initialize_enemy(level, enemy, 10 + (level->wave * 2), level->wave * 3);
         enemy->entity.alive = true;
 
         enemy->entity.sprite.position.x = rand_rangef(-2000,
@@ -112,7 +126,7 @@ void level_update(level_t *level, float deltatime) {
     bullet_engine_update(&level->bullet_engine, deltatime);
 
     bool found_alive_enemies = false;
-    for (size_t i = 0; i < level->enemy_count; i++) {
+    for (size_t i = 0; i < level->enemies_count; i++) {
         enemy_t *enemy = &level->enemies[i];
         if (!enemy->entity.alive) {
             continue;
@@ -143,7 +157,7 @@ void level_update(level_t *level, float deltatime) {
 
         // Handle collisions
         uncollide(&level->player.entity.sprite, &enemy->entity.sprite, 75.0f);
-        for (size_t j = 0; j < level->enemy_count; j++) {
+        for (size_t j = 0; j < level->enemies_count; j++) {
             enemy_t *other = &level->enemies[j];
             uncollide(&enemy->entity.sprite, &other->entity.sprite, 100.0f);
         }
@@ -160,12 +174,12 @@ void level_update(level_t *level, float deltatime) {
 
 
 void level_render(level_t *level) {
-    SDL_RenderTexture(level->renderer, level->background, 0, 0);
+    SDL_RenderTexture(level->renderer, level->background_texture, 0, 0);
 
     bullet_engine_render(&level->bullet_engine);
     sprite_render(&level->player.entity.sprite, level->renderer);
 
-    for (size_t i = 0; i < level->enemy_count; i++) {
+    for (size_t i = 0; i < level->enemies_count; i++) {
         enemy_t *enemy = &level->enemies[i];
         if (!enemy->entity.alive) {
             continue;
