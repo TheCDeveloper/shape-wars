@@ -11,9 +11,4 @@ typedef struct enemy_t {
     int damage;
 } enemy_t;
 
-void enemy_init(enemy_t *enemy,
-                      SDL_Renderer *renderer,
-                      int health,
-                      int damage);
-
 #endif // ENEMY_H

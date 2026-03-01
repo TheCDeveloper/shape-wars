@@ -44,6 +44,8 @@ game_t *game_init(void) {
     }
 
     level_initialize(&game->level, game->renderer);
+    game->ui = calloc(1, sizeof(ui_t *));
+    ui_init(game->ui, &game->level);
 
     return game;
 }
@@ -54,6 +56,8 @@ void game_destroy(game_t *game) {
         return;
     }
 
+    ui_cleanup(game->ui);
+    free(game->ui);
     level_deinitialize(&game->level);
 
     SDL_DestroyRenderer(game->renderer);
@@ -91,6 +95,7 @@ void game_run(game_t *game) {
 
         SDL_RenderClear(game->renderer);
         level_render(&game->level);
+        ui_render(game->ui);
         SDL_RenderPresent(game->renderer);
 
         handle_events(game);

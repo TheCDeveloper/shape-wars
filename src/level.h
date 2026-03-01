@@ -22,11 +22,12 @@ typedef struct level_t {
     unsigned int wave;
     unsigned int score;
 
-    size_t enemy_count;
+    size_t enemies_count;
     enemy_t *enemies;
 
     SDL_Renderer *renderer;
-    SDL_Texture *background;
+    SDL_Texture *background_texture;
+    SDL_Texture *enemy_texture;
 } level_t;
 
 void level_initialize(level_t *level, SDL_Renderer *renderer);

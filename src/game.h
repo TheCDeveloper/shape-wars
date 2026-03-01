@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "level.h"
+#include "ui.h"
 
 #include <stdbool.h>
 
@@ -14,6 +15,7 @@ typedef struct game {
     SDL_Window *window;
     SDL_Renderer *renderer;
 
+    ui_t *ui;
     level_t level;
 } game_t;
 
