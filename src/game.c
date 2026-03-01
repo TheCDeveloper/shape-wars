@@ -44,8 +44,11 @@ game_t *game_init(void) {
     }
 
     level_initialize(&game->level, game->renderer);
-    game->ui = calloc(1, sizeof(ui_t *));
-    ui_init(game->ui, &game->level);
+    game->ui = ui_init(&game->level);
+    if (!game->ui) {
+        fprintf(stderr, "E: failed to initialize UI.\n");
+        abort();
+    }
 
     return game;
 }
@@ -57,7 +60,6 @@ void game_destroy(game_t *game) {
     }
 
     ui_cleanup(game->ui);
-    free(game->ui);
     level_deinitialize(&game->level);
 
     SDL_DestroyRenderer(game->renderer);
