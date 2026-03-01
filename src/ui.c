@@ -4,6 +4,8 @@
 #include <SDL3/SDL_render.h>
 #include <SDL3_ttf/SDL_ttf.h>
 
+#include <stdio.h>
+
 
 struct ui_t {
     SDL_Renderer *renderer;
